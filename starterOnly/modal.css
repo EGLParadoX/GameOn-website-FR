@@ -88,6 +88,11 @@ img {
     display: block;
     text-align: left;
   }
+
+  .hero-content
+  {
+    font-size: 10px;
+  }
 }
 
 
@@ -321,6 +326,7 @@ input[data-error]::after {
 .close:after {
   transform: rotate(-45deg);
 }
+
 .btn-submit,
 .btn-signup {
   background: #fe142f;
@@ -517,6 +523,8 @@ footer {
   }
 }
 
+
+
 @keyframes modalopen {
   from {
     opacity: 0;
@@ -526,4 +534,15 @@ footer {
     opacity: 1;
   }
 }
+
+@keyframes modalclose {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(150px);
+  }
+}
+
 
