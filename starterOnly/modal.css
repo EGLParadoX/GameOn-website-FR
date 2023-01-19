@@ -523,6 +523,20 @@ footer {
   }
 }
 
+#success-message
+{
+  display: none; 
+  padding-top: 60%;
+
+}
+
+#success-message p 
+{
+  text-align: center;
+  font-size: 50px;
+  padding-bottom: 60%;
+}
+
 
 
 @keyframes modalopen {

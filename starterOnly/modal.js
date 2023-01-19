@@ -11,6 +11,7 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const closeModalBtn = document.querySelectorAll(".close");
+const closeSubBtn = document.querySelectorAll(".close-submit");
 const formData = document.querySelectorAll(".formData");
 
 // launch modal event
@@ -19,6 +20,8 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // close modal event
 closeModalBtn.forEach((span) => span.addEventListener("click", closeModal));
 
+// close modal after submit event
+closeSubBtn.forEach((close) => close.addEventListener("click", closeModal))
 
 
 // launch modal form
@@ -44,21 +47,20 @@ var validation = document.getElementById("validation_button");
 
 function validate(){
 
-  e.preventDefault();
+  if (valideSurname() && valideName() && valideEmail() && valideNumber() && valideDate() && isConditionChecked()) {
 
-  valideSurname();
-  valideName();
-  valideEmail();
-  valideNumber();
-  valideDate();
-  isLocationChecked();
-  isConditionChecked();
-
-  let formsection = document.getElementById("form-section");
-  let successmessage =  document.getElementById("success-message");
-
-  formsection.style.display = "none";
-  successmessage.style.display = "block";
+    // && isLocationChecked() tu vas retravailler cette validation et tu la remettras dans le if 
+    console.log("success");
+    let formsection = document.getElementById("form-section");
+    let successmessage = document.getElementById("success-message");
+    
+    formsection.style.display = "none";
+    successmessage.style.display = "block";
+    return false;
+  } else {
+    console.log("success false");
+    return false;
+  }
 
 }
 
