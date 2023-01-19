@@ -47,13 +47,13 @@ var validation = document.getElementById("validation_button");
 
 function validate(){
 
-  if (valideSurname() && valideName() && valideEmail() && valideNumber() && valideDate() && isConditionChecked()) {
+  if (valideSurname() && valideName() && valideEmail() && valideNumber() && valideDate() && isLocationChecked && isConditionChecked()) {
 
     // && isLocationChecked() tu vas retravailler cette validation et tu la remettras dans le if 
     console.log("success");
     let formsection = document.getElementById("form-section");
     let successmessage = document.getElementById("success-message");
-    
+
     formsection.style.display = "none";
     successmessage.style.display = "block";
     return false;
@@ -186,30 +186,28 @@ function valideNumber(){
 
 function isLocationChecked(){
 
+  var a = 0;
+  var m_checkbox = document.getElementById("missing_checkbox");
+  const radio = document.getElementsByName("location");
 
-  var checkboxlocation = document.getElementsByName("location");
-  var m_checkboxlocation = document.getElementById("missing_checkbox");
-
-  for(i=0; i < checkboxlocation.length; i++)
-  {
-    if(checkboxlocation.item(i).checked)
+    for(var i=0; i < radio.length; i++)
     {
-      m_checkboxlocation.textContent = ""; 
-      break;
+      if(radio[i].checked)
+      {
+        a=1;
+        m_checkbox.style.textContent = " ";
+        break;
+      }
 
+      if(a==0)
+      {
+        m_checkbox.style.textContent = "Vous devez choisir une location.*";
+        m_checkbox.style.color = "red";
+        m_checkbox.style.fontSize = "13px";
+        return false;
+
+      }
     }
-    else
-    {
-      m_checkboxlocation.textContent = "Vous devez chosir une option.*";
-      m_checkboxlocation.style.color = "red";
-      m_checkboxlocation.style.fontSize = "14px";
-      return false;
-    }
-      
-  }
-
-  
-
 }
 
 function isConditionChecked(){
