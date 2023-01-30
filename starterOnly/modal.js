@@ -141,7 +141,7 @@ function valideDate(){
 
   if((d1.getFullYear() - d.getFullYear()) < 3)
   {
-    m_birthdate.textContent = "Veuillez saisir une date d'anniversaire correct.*";
+    m_birthdate.textContent = "Veuillez saisir une date d'anniversaire correct (+3 ans).*";
     m_birthdate.style.color = "red";
     m_birthdate.style.fontSize = "14px";
     return false;
