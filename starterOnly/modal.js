@@ -44,7 +44,7 @@ var validation = document.getElementById("validation_button");
 
 function validate(){
 
-  if (valideSurname() && valideName() && valideEmail() && valideNumber() && valideDate() && isLocationChecked() && isConditionChecked()) {
+  if (valideSurname() && valideName() && valideEmail() && valideDate() && valideNumber()  && isLocationChecked() && isConditionChecked()) {
 
     let formsection = document.getElementById("form-section");
     let successmessage = document.getElementById("success-message");
@@ -138,6 +138,16 @@ function valideDate(){
 
   const d = new Date(birthdate.value);
   const d1 = new Date();
+
+
+  if(!birthdate.value)
+  {
+    m_birthdate.textContent = "Veuillez saisir une date d'anniversaire correct (+3 ans).*";
+    m_birthdate.style.color = "red";
+    m_birthdate.style.fontSize = "14px";
+    return false;
+
+  }
 
   if((d1.getFullYear() - d.getFullYear()) < 3)
   {
