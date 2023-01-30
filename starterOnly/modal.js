@@ -7,50 +7,45 @@ function editNav() {
   }
 }
 
-// DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const closeModalBtn = document.querySelectorAll(".close");
 const closeSubBtn = document.querySelectorAll(".close-submit");
 const formData = document.querySelectorAll(".formData");
 
-// launch modal event
+
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
-// close modal event
 closeModalBtn.forEach((span) => span.addEventListener("click", closeModal));
 
-// close modal after submit event
 closeSubBtn.forEach((close) => close.addEventListener("click", closeModal))
 
 
-// launch modal form
+
 function launchModal() {
   modalbg.style.display = "block";
 }
 
-// close modal form
 function closeModal() {
+  let formsection = document.getElementById("form-section");
+  let successmessage = document.getElementById("success-message");
+  formsection.style.display = "block";
+  successmessage.style.display = "none";
+  let form = document.getElementsByTagName("form");
+  form[0].reset();
   modalbg.style.display = "none";
 }
 
 
-// initialisation des différentes variables
 
 
 var validation = document.getElementById("validation_button");
 
 
-
-
-
-
 function validate(){
 
-  if (valideSurname() && valideName() && valideEmail() && valideNumber() && valideDate() && isLocationChecked && isConditionChecked()) {
+  if (valideSurname() && valideName() && valideEmail() && valideNumber() && valideDate() && isLocationChecked() && isConditionChecked()) {
 
-    // && isLocationChecked() tu vas retravailler cette validation et tu la remettras dans le if 
-    console.log("success");
     let formsection = document.getElementById("form-section");
     let successmessage = document.getElementById("success-message");
 
@@ -58,7 +53,7 @@ function validate(){
     successmessage.style.display = "block";
     return false;
   } else {
-    console.log("success false");
+
     return false;
   }
 
@@ -137,15 +132,12 @@ function valideEmail(){
 
 function valideDate(){
 
-  // vérification de la date d'anniversaire
 
   var birthdate = document.getElementById("birthdate")
   var m_birthdate = document.getElementById("missing_birthdate")
 
   const d = new Date(birthdate.value);
   const d1 = new Date();
-
-  console.log(d1.getFullYear());
 
   if((d1.getFullYear() - d.getFullYear()) < 3)
   {
@@ -186,29 +178,28 @@ function valideNumber(){
 
 function isLocationChecked(){
 
-  var a = 0;
-  var m_checkbox = document.getElementById("missing_checkbox");
-  const radio = document.getElementsByName("location");
 
-    for(var i=0; i < radio.length; i++)
-    {
-      if(radio[i].checked)
-      {
-        a=1;
-        m_checkbox.style.textContent = " ";
-        break;
+      var a = 0;
+      var m_checkbox = document.getElementById("missing_checkbox");
+      const radio = document.getElementsByName("location");
+    
+      for (var i = 0; i < radio.length; i++) {
+        if (radio[i].checked) {
+          a = 1;
+          m_checkbox.textContent = " ";
+          return true;
+        }
       }
-
-      if(a==0)
-      {
-        m_checkbox.style.textContent = "Vous devez choisir une location.*";
+    
+      if (a == 0) {
+        m_checkbox.textContent = "Vous devez choisir une location.*";
         m_checkbox.style.color = "red";
         m_checkbox.style.fontSize = "13px";
         return false;
-
+    
       }
-    }
-}
+  }
+
 
 function isConditionChecked(){
 
